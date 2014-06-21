@@ -87,3 +87,11 @@ void Animation::stop() {
 void Animation::drawCurrentSprite(float x, float y) {
 	sprites[currentSprite].draw(x,y);
 }
+
+void Animation::drawAll(float x, float y) {
+	float displacex = 0;
+	for(size_t i = 0; i < sprites.size(); i++) {
+		sprites[i].draw(x + displacex, y);
+		displacex += sprites[i].getXSize();
+	}
+}

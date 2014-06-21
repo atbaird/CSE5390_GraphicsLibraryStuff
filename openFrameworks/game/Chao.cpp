@@ -8,14 +8,14 @@ Chao::Chao() {
 
 	//idle
 	ofImageExt idle1, idle2;
-	idle1 = ofImageExt(spriteSheet, 0,0,23,25);
-	idle2 = ofImageExt(spriteSheet, 23,0,23,25);
+	idle1 = ofImageExt(spriteSheet, 0,0,22,25);
+	idle2 = ofImageExt(spriteSheet, 22,0,21,25);
 	animations[0].addSprite(idle1);
 	animations[0].addSprite(idle2);
 
 	//walk left
 	ofImageExt left1, left2, left3;
-	left1 = ofImageExt(spriteSheet, 220, 25,21,2);
+	left1 = ofImageExt(spriteSheet, 220, 25,21,25);
 	left2 = ofImageExt(spriteSheet, 240,25,21,25);
 	left3 = ofImageExt(spriteSheet, 280,25,21,25);
 	animations[1].addSprite(left1);
@@ -78,9 +78,15 @@ void Chao::update(clock_t currentTime) {
 	}
 }
 void Chao::drawTest() {
-	animations[0].drawCurrentSprite(0,0);
-	animations[1].drawCurrentSprite(26,0);
-	animations[2].drawCurrentSprite(52,0);
-	animations[3].drawCurrentSprite(0,26);
-	animations[4].drawCurrentSprite(26,26);
+	animations[0].drawAll(0,0);
+	animations[1].drawAll(0,26);
+	animations[2].drawAll(0,52);
+	animations[3].drawAll(0,78);
+	animations[4].drawAll(0,104);
+
+	animations[0].drawCurrentSprite(90, 0);
+	animations[1].drawCurrentSprite(90,26);
+	animations[2].drawCurrentSprite(90,52);
+	animations[3].drawCurrentSprite(90,78);
+	animations[4].drawCurrentSprite(90,104);
 }

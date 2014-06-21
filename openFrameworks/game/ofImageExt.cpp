@@ -28,5 +28,13 @@ void ofImageExt::setFloats(float xst, float yst, float xsz, float ysz) {
 }
 
 void ofImageExt::draw(float x, float y) {
-	image.drawSubsection(xStart, yStart, xSize, ySize, x, y);
+	image.drawSubsection( x, y, xSize, ySize,xStart, yStart);
+}
+
+float ofImageExt::getXSize() {
+	return xSize;
+}
+
+float ofImageExt::getYSize() {
+	return ySize;
 }

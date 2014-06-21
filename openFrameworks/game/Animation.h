@@ -27,6 +27,7 @@ public:
 	void start(clock_t);
 	void stop();
 	void drawCurrentSprite(float, float);
+	void drawAll(float, float);
 private:
 	vector<ofImageExt> sprites;
 	clock_t lastChanged;
