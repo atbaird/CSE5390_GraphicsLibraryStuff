@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "../Chao.h"
+#include "../Background.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,5 +22,6 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		Chao chao;
+		Background background;
 		
 };

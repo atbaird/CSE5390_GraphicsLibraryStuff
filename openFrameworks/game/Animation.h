@@ -28,6 +28,8 @@ public:
 	void stop();
 	void drawCurrentSprite(float, float);
 	void drawAll(float, float);
+	void setScale(float, float);
+	void setDelay(long);
 private:
 	vector<ofImageExt> sprites;
 	clock_t lastChanged;

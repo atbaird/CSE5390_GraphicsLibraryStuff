@@ -2,8 +2,15 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	srand(time(NULL));
 	chao = Chao();
+	background = Background();
+	background.setStart(160,90);
+	chao.setLimits(background.getXStart(), background.getXLength() + background.getXStart(), 
+		background.getYStart(), background.getYStart() + background.getYLength());
 	chao.testSprites(clock());
+
+	chao.randomizeStartPos();
 }
 
 //--------------------------------------------------------------
@@ -16,7 +23,9 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofSetColor(255);
-	chao.drawTest();
+	background.draw();
+	//chao.drawTest();
+	chao.draw();
 }
 
 //--------------------------------------------------------------

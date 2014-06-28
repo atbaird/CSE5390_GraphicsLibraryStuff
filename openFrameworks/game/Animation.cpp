@@ -18,6 +18,9 @@ void Animation::addSprite(ofImageExt & sprite) {
 	sprites.push_back(sprite);
 }
 
+void Animation::setDelay(long a) {
+	frameDelay = a;
+}
 
 
 void Animation::setVisible(bool a) {
@@ -85,13 +88,27 @@ void Animation::stop() {
 	visible = false;
 }
 void Animation::drawCurrentSprite(float x, float y) {
+	float displaceMe = x;
+	if(sprites[currentSprite].getXScale() < 0) {
+		displaceMe += sprites[currentSprite].getXSize() * sprites[currentSprite].getXScale();
+	}
 	sprites[currentSprite].draw(x,y);
 }
 
 void Animation::drawAll(float x, float y) {
 	float displacex = 0;
 	for(size_t i = 0; i < sprites.size(); i++) {
-		sprites[i].draw(x + displacex, y);
-		displacex += sprites[i].getXSize();
+		float displaceMe = displacex;
+		if(sprites[i].getXScale() < 0) {
+			displaceMe += (sprites[i].getXSize() * sprites[i].getXScale());
+		}
+		sprites[i].draw(displaceMe, y);
+		displacex += (sprites[i].getXSize() * sprites[i].getXScale());
+	}
+}
+
+void Animation::setScale(float x, float y) {
+	for(size_t i = 0; i < sprites.size(); i++) {
+		sprites[i].setScale(x,y);
 	}
 }

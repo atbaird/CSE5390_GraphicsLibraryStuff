@@ -22,6 +22,12 @@
     <ClCompile Include="ofImageExt.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="DirtPatch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -42,6 +48,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="ofImageExt.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="DirtPatch.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

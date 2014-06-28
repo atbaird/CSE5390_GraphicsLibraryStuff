@@ -13,8 +13,12 @@ public:
 	void draw(float, float);
 	void setAll(ofImage &, float, float, float, float);
 	void setFloats(float, float, float, float);
+	void setScale(float, float);
+	
 	float getXSize();
 	float getYSize();
+	float getXScale();
+	float getYScale();
 	
 
 private:

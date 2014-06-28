@@ -28,7 +28,16 @@ void ofImageExt::setFloats(float xst, float yst, float xsz, float ysz) {
 }
 
 void ofImageExt::draw(float x, float y) {
-	image.drawSubsection( x, y, xSize, ySize,xStart, yStart);
+	int a = 0;
+	int b = 0;
+	if(xScale < 0) {
+		a = -1;
+	}
+	if(yScale < 0) {
+		b = -1;
+	}
+
+	image.drawSubsection( x + (xSize * xScale * a), y  + (ySize * yScale * b), xSize* xScale, ySize * yScale,xStart , yStart , xSize, ySize);
 }
 
 float ofImageExt::getXSize() {
@@ -37,4 +46,20 @@ float ofImageExt::getXSize() {
 
 float ofImageExt::getYSize() {
 	return ySize;
+}
+
+void ofImageExt::setScale(float x, float y) {
+	if(x != 0) {
+		xScale = x;
+	}
+	if(y != 0) {
+		yScale = y;
+	}
+}
+
+float ofImageExt::getXScale() {
+	return xScale;
+}
+float ofImageExt::getYScale() {
+	return yScale;
 }
