@@ -16,6 +16,8 @@ public:
 	float getYLength();
 	float getXStart();
 	float getYStart();
+	float getXScale();
+	float getYScale();
 
 private:
 	void updatePatches();

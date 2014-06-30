@@ -92,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Bush.cpp" />
     <ClCompile Include="Chao.cpp" />
     <ClCompile Include="DirtPatch.cpp" />
     <ClCompile Include="ofImageExt.cpp" />
@@ -101,6 +102,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Bush.h" />
     <ClInclude Include="Chao.h" />
     <ClInclude Include="DirtPatch.h" />
     <ClInclude Include="ofImageExt.h" />

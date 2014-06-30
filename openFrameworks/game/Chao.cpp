@@ -86,10 +86,8 @@ Chao::Chao() {
 	lastMoveDecision = clock();
 	x = 0;
 	y = 0;
-	xSpeed = 0;
-	ySpeed = 0;
 	setLimits(0,800,0,700);
-	moveDec = 0;
+	genRandMov();
 }
 
 Chao::~Chao() {
@@ -111,7 +109,30 @@ void Chao::testSprites(clock_t currentTime) {
 		chaoBall[i].start(currentTime);
 	}
 }
-void Chao::update(clock_t currentTime) {
+void Chao::genRandMov() {
+	moveDec = rand() % animations.size();
+	if(moveDec == 0) {
+		xSpeed = 0;
+		ySpeed = 0;
+	} else if(moveDec == 1) {
+		xSpeed = -1;
+		ySpeed = 0;
+	} else if(moveDec == 2) {
+		xSpeed = 1;
+		ySpeed = 0;
+	} else if(moveDec == 3) {
+		ySpeed = -1;
+		xSpeed = 0;
+	} else if(moveDec == 4) {
+		ySpeed = 1;
+		xSpeed = 0;
+	} else if(moveDec == 5) {
+		xSpeed = 0;
+		ySpeed = 0;
+	}
+}
+
+void Chao::update(clock_t currentTime, vector<Bush>& bushes) {
 	for(size_t i = 0; i < animations.size(); i++) {
 		animations[i].update(currentTime);
 	}
@@ -120,30 +141,30 @@ void Chao::update(clock_t currentTime) {
 	}
 
 	if(currentTime - lastMoveDecision > 5000) {
-		moveDec = rand() % animations.size();
 		lastMoveDecision = currentTime;
-		if(moveDec == 0) {
-			xSpeed = 0;
-			ySpeed = 0;
-		} else if(moveDec == 1) {
-			xSpeed = -1;
-			ySpeed = 0;
-		} else if(moveDec == 2) {
-			xSpeed = 1;
-			ySpeed = 0;
-		} else if(moveDec == 3) {
-			ySpeed = -1;
-			xSpeed = 0;
-		} else if(moveDec == 4) {
-			ySpeed = 1;
-			xSpeed = 0;
-		} else if(moveDec == 5) {
-			xSpeed = 0;
-			ySpeed = 0;
+		genRandMov();
+	}
+	float testX = x+ xSpeed;
+	float testX2 = testX + (23* currentXScale);
+	float testY = y + ySpeed;
+	float testY2 = testY + (25 * currentYScale);
+	for(size_t i = 0; i < bushes.size(); i++) {
+		float bushXSize = bushes[i].getXSize();
+		float bushYSize = bushes[i].getYSize();
+		float bushX = bushXSize + bushes[i].getX();
+		float bushY = bushYSize + bushes[i].getY();
+		if(testX < bushX && testX > bushes[i].getX() && ((testY < bushY && testY > bushes[i].getY()) || (testY2 < bushY && testY2 > bushes[i].getY()))) {
+			cout << " " << i << " true";
+		} else if(testX2 <bushX && testX2 > bushes[i].getX() && ((testY < bushY && testY > bushes[i].getY()) || (testY2 < bushY && testY2 > bushes[i].getY()))) {
+			cout << " " << i << " true";
+		} else {
+			cout << " " << i << " false";
 		}
 	}
-	x += xSpeed;
-	y += ySpeed;
+	cout << "\n";
+	x = testX;
+	y = testY;
+
 	if(x < xMin) {
 		x = xMin;
 	}

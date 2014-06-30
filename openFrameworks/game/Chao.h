@@ -1,4 +1,4 @@
-#include "Animation.h"
+#include "Bush.h"
 
 
 #ifndef CHAO_H
@@ -9,7 +9,7 @@ public:
 	Chao();
 	~Chao();
 	void testSprites(clock_t);
-	void update(clock_t);
+	void update(clock_t, vector<Bush>&);
 	void drawTest();
 	void updateScreenLimits(float, float);
 	void draw();
@@ -17,6 +17,8 @@ public:
 	void setLimits(float, float, float, float);
 	void randomizeStartPos();
 private:
+	void genRandMov();
+
 	vector<Animation> animations, chaoBall;
 	clock_t lastMoveDecision;
 	int moveDec;

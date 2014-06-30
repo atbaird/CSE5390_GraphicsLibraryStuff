@@ -22,6 +22,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		Chao chao;
+		vector<Bush> bushes;
 		Background background;
 		
 };

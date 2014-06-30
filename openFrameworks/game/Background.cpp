@@ -84,3 +84,10 @@ float Background::getXStart() {
 float Background::getYStart() {
 	return yStart;
 }
+
+float Background::getXScale() {
+	return cells[0][0].getXScale();
+}
+float Background::getYScale() {
+	return cells[0][0].getYScale();
+}
